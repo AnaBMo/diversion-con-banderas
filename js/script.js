@@ -5,6 +5,8 @@ la API (https://restcountries.com/v3/all) para obtener información sobre todos 
 Son 250, tarda un poco en renderizar.
 - La información se ordena alfabéticamente.
 ***************************************************************************************** */
+const listaPaises = document.getElementById('countries-list');
+
 const obtenerPaises = async () => {
     try {
         const response = await fetch('https://restcountries.com/v3.1/all'); 
@@ -31,7 +33,7 @@ const obtenerPaises = async () => {
         paisesOrdenAlfa.forEach(pais => mostrarPaises(pais));
 
     } catch (error) {
-        console.error('🔴 Error al obtener los datos:', error.message); // Mostrar el mensaje de error
+        console.error('🔴 Error al obtener los datos:', error.message); 
     }
 };
 
@@ -40,7 +42,7 @@ obtenerPaises();
 const mostrarPaises = (pais) => {
     /* ***** */ console.log('🟡Función muestra paises ok? ', pais);
 
-    const listaPaises = document.getElementById('countries-list');
+    
     if (!listaPaises) {
         console.error('🔴 Elemento con id "countries-list" no encontrado.');
         return;
@@ -93,3 +95,7 @@ const mostrarDetallePais = (pais) => {
         document.body.removeChild(ventanaFlotante); 
     });
 };
+
+
+/* A corregir: el click debe ser en la imagen. 
+Ahora mismo sale la ventana flotante pulsando tb en el nombre...*/
